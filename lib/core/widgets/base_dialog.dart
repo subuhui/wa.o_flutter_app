@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import '../theme/app_colors.dart';
 
@@ -76,33 +77,33 @@ class BaseDialog extends StatelessWidget {
 
     return Center(
       child: Container(
-        width: 310,
-        margin: const EdgeInsets.symmetric(horizontal: 32),
+        width: 310.w,
+        margin: EdgeInsets.symmetric(horizontal: 32.w),
         decoration: BoxDecoration(
           color: isDark ? AppColors.darkSurface : AppColors.lightSurface,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: const [
+          borderRadius: BorderRadius.circular(16.r),
+          boxShadow: [
             BoxShadow(
               color: Colors.black26,
-              blurRadius: 20,
-              offset: Offset(0, 8),
+              blurRadius: 20.r,
+              offset: Offset(0, 8.w),
             ),
           ],
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const SizedBox(height: 24),
+            SizedBox(height: 24.w),
             // 1. 标题栏
             if (titleWidget != null)
               titleWidget!
             else if (title != null && title!.isNotEmpty)
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
+                padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: Text(
                   title!,
-                  style: const TextStyle(
-                    fontSize: 18,
+                  style: TextStyle(
+                    fontSize: 18.sp,
                     fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.center,
@@ -110,16 +111,16 @@ class BaseDialog extends StatelessWidget {
               ),
 
             // 2. 内容区
-            const SizedBox(height: 12),
+            SizedBox(height: 12.w),
             if (contentWidget != null)
               contentWidget!
             else if (content != null && content!.isNotEmpty)
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
+                padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: Text(
                   content!,
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     color: isDark
                         ? AppColors.darkTextSecondary
                         : AppColors.lightTextSecondary,
@@ -129,7 +130,7 @@ class BaseDialog extends StatelessWidget {
                 ),
               ),
 
-            const SizedBox(height: 24),
+            SizedBox(height: 24.w),
             const Divider(height: 1),
 
             // 3. 底部操作按钮栏
@@ -139,16 +140,16 @@ class BaseDialog extends StatelessWidget {
                   Expanded(
                     child: InkWell(
                       onTap: onCancel ?? () => SmartDialog.dismiss<void>(),
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(16),
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(16.r),
                       ),
                       child: Container(
-                        height: 48,
+                        height: 48.w,
                         alignment: Alignment.center,
                         child: Text(
                           cancelText,
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             color: isDark
                                 ? AppColors.darkTextHint
                                 : AppColors.lightTextSecondary,
@@ -158,8 +159,8 @@ class BaseDialog extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    width: 1,
-                    height: 48,
+                    width: 1.w,
+                    height: 48.w,
                     color:
                         isDark ? AppColors.darkDivider : AppColors.lightDivider,
                   ),
@@ -168,17 +169,17 @@ class BaseDialog extends StatelessWidget {
                   child: InkWell(
                     onTap: onConfirm ?? () => SmartDialog.dismiss<void>(),
                     borderRadius: BorderRadius.only(
-                      bottomRight: const Radius.circular(16),
+                      bottomRight: Radius.circular(16.r),
                       bottomLeft:
-                          showCancel ? Radius.zero : const Radius.circular(16),
+                          showCancel ? Radius.zero : Radius.circular(16.r),
                     ),
                     child: Container(
-                      height: 48,
+                      height: 48.w,
                       alignment: Alignment.center,
                       child: Text(
                         confirmText,
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 16.sp,
                           fontWeight: FontWeight.w600,
                           color: confirmColor ?? AppColors.primary,
                         ),

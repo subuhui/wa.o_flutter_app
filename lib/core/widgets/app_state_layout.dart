@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../base/view_state.dart';
 import '../theme/app_colors.dart';
 
@@ -42,15 +43,16 @@ class AppStateLayout extends StatelessWidget {
 
   /// 默认加载中样式
   Widget _buildDefaultLoading(BuildContext context) {
-    return const Center(
+    return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          CircularProgressIndicator.adaptive(strokeWidth: 3),
-          SizedBox(height: 16),
+          CircularProgressIndicator.adaptive(strokeWidth: 3.w),
+          SizedBox(height: 16.w),
           Text(
             '加载中...',
-            style: TextStyle(color: AppColors.lightTextSecondary, fontSize: 14),
+            style:
+                TextStyle(color: AppColors.lightTextSecondary, fontSize: 14.sp),
           ),
         ],
       ),
@@ -61,29 +63,29 @@ class AppStateLayout extends StatelessWidget {
   Widget _buildDefaultEmpty(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(32),
+        padding: EdgeInsets.all(32.w),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(
+            Icon(
               Icons.inbox_rounded,
-              size: 64,
+              size: 64.w,
               color: AppColors.lightTextHint,
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16.w),
             Text(
               emptyMessage ?? '暂无相关数据',
-              style: const TextStyle(
+              style: TextStyle(
                 color: AppColors.lightTextSecondary,
-                fontSize: 15,
+                fontSize: 15.sp,
               ),
               textAlign: TextAlign.center,
             ),
             if (onRetry != null) ...[
-              const SizedBox(height: 16),
+              SizedBox(height: 16.w),
               OutlinedButton.icon(
                 onPressed: onRetry,
-                icon: const Icon(Icons.refresh, size: 18),
+                icon: Icon(Icons.refresh, size: 18.w),
                 label: const Text('刷新看看'),
               ),
             ],
@@ -97,38 +99,38 @@ class AppStateLayout extends StatelessWidget {
   Widget _buildDefaultError(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(32),
+        padding: EdgeInsets.all(32.w),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(
+            Icon(
               Icons.error_outline_rounded,
-              size: 64,
+              size: 64.w,
               color: AppColors.error,
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16.w),
             Text(
               errorMessage ?? '数据加载遇到问题',
-              style: const TextStyle(
+              style: TextStyle(
                 color: AppColors.lightTextPrimary,
-                fontSize: 15,
+                fontSize: 15.sp,
                 fontWeight: FontWeight.w500,
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.w),
             if (onRetry != null)
               FilledButton.icon(
                 onPressed: onRetry,
                 style: FilledButton.styleFrom(
                   backgroundColor: AppColors.primary,
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                      EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.w),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(20.r),
                   ),
                 ),
-                icon: const Icon(Icons.refresh_rounded, size: 18),
+                icon: Icon(Icons.refresh_rounded, size: 18.w),
                 label: const Text('点击重试'),
               ),
           ],

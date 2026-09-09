@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/widgets/base_bottom_sheet.dart';
 
 /// 取消订单原因选择半屏抽屉
@@ -36,7 +37,7 @@ class _OrderCancelDialogState extends State<OrderCancelDialog> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.w),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -50,7 +51,7 @@ class _OrderCancelDialogState extends State<OrderCancelDialog> {
             child: Column(
               children: _reasons.map((reason) {
                 return RadioListTile<String>(
-                  title: Text(reason, style: const TextStyle(fontSize: 14)),
+                  title: Text(reason, style: TextStyle(fontSize: 14.sp)),
                   value: reason,
                   contentPadding: EdgeInsets.zero,
                   visualDensity: VisualDensity.compact,
@@ -58,19 +59,19 @@ class _OrderCancelDialogState extends State<OrderCancelDialog> {
               }).toList(),
             ),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.w),
           SizedBox(
             width: double.infinity,
-            height: 44,
+            height: 44.w,
             child: FilledButton(
               onPressed: () {
                 Navigator.of(context).pop();
                 widget.onConfirm(_selectedReason);
               },
-              child: const Text('确认取消订单'),
+              child: Text('确认取消订单', style: TextStyle(fontSize: 14.sp)),
             ),
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: 12.w),
         ],
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/base/base_page.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/utils/toast_util.dart';
@@ -77,7 +78,7 @@ class OrderDetailPage extends ConsumerWidget {
             : AppRefresher(
                 onRefresh: actions.onRefresh,
                 child: ListView(
-                  padding: const EdgeInsets.only(bottom: 24),
+                  padding: EdgeInsets.only(bottom: 24.w),
                   children: [
                     // 1. 顶部架构说明卡片 (用于技术演示对照)
                     _buildArchitectureTip(context),
@@ -137,25 +138,25 @@ class OrderDetailPage extends ConsumerWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Container(
-      margin: const EdgeInsets.fromLTRB(16, 12, 16, 0),
-      padding: const EdgeInsets.all(12),
+      margin: EdgeInsets.fromLTRB(16.w, 12.w, 16.w, 0),
+      padding: EdgeInsets.all(12.w),
       decoration: BoxDecoration(
         color: isDark
             ? AppColors.primary.withValues(alpha: 0.15)
             : AppColors.primary.withValues(alpha: 0.08),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(10.r),
         border: Border.all(color: AppColors.primary.withValues(alpha: 0.3)),
       ),
-      child: const Row(
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Icons.tips_and_updates, size: 18, color: AppColors.primary),
-          SizedBox(width: 8),
+          Icon(Icons.tips_and_updates, size: 18.w, color: AppColors.primary),
+          SizedBox(width: 8.w),
           Expanded(
             child: Text(
               '架构范式：Riverpod 到 Page 为止，UI 子组件均为纯 StatelessWidget。动作由 OrderDetailActions 回调包统一分发，倒计时通过 select 隔离秒级局部重绘。',
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 12.sp,
                 color: AppColors.primary,
                 height: 1.35,
               ),

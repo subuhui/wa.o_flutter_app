@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ui_demo/core/base/base_page.dart';
 import 'package:ui_demo/core/theme/app_colors.dart';
 import 'package:ui_demo/core/widgets/app_state_layout.dart';
@@ -18,19 +19,19 @@ class HomePage extends StatelessWidget {
       title: '基础架构演示',
       // 💡 演示：固定在页面底部的安全区域操作栏 (自动避开 iPhone 底部横条与刘海)
       bottomBar: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.w),
         decoration: const BoxDecoration(
           border: Border(top: BorderSide(color: AppColors.lightDivider)),
         ),
-        child: const Row(
+        child: Row(
           children: [
-            Icon(Icons.shield_outlined, size: 18, color: AppColors.primary),
-            SizedBox(width: 8),
+            Icon(Icons.shield_outlined, size: 18.w, color: AppColors.primary),
+            SizedBox(width: 8.w),
             Expanded(
               child: Text(
                 '已接入 BaseScaffold：安全底部与点击空白收起键盘已生效',
                 style: TextStyle(
-                    fontSize: 12, color: AppColors.lightTextSecondary),
+                    fontSize: 12.sp, color: AppColors.lightTextSecondary),
               ),
             ),
           ],

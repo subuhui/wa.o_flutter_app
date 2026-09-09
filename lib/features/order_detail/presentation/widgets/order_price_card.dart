@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../data/models/order_detail_model.dart';
 
@@ -13,11 +14,11 @@ class OrderPriceCard extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-      padding: const EdgeInsets.all(16),
+      margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.w),
+      padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
         color: isDark ? AppColors.darkSurface : AppColors.lightSurface,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.r),
         border: Border.all(
           color: isDark ? AppColors.darkDivider : AppColors.lightDivider,
         ),
@@ -25,16 +26,16 @@ class OrderPriceCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             '费用明细',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: 12.w),
           _buildPriceRow(
             '商品总额',
             '¥${priceBreakdown.goodsTotal.toStringAsFixed(2)}',
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: 8.w),
           _buildPriceRow(
             '运费',
             priceBreakdown.shippingFee == 0
@@ -42,7 +43,7 @@ class OrderPriceCard extends StatelessWidget {
                 : '¥${priceBreakdown.shippingFee.toStringAsFixed(2)}',
           ),
           if (priceBreakdown.couponDiscount > 0) ...[
-            const SizedBox(height: 8),
+            SizedBox(height: 8.w),
             _buildPriceRow(
               '优惠券抵扣',
               '-¥${priceBreakdown.couponDiscount.toStringAsFixed(2)}',
@@ -50,25 +51,25 @@ class OrderPriceCard extends StatelessWidget {
             ),
           ],
           if (priceBreakdown.pointsDiscount > 0) ...[
-            const SizedBox(height: 8),
+            SizedBox(height: 8.w),
             _buildPriceRow(
               '积分抵扣',
               '-¥${priceBreakdown.pointsDiscount.toStringAsFixed(2)}',
               valueColor: AppColors.error,
             ),
           ],
-          const Divider(height: 24),
+          Divider(height: 24.w),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
+              Text(
                 '实付款',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
               ),
               Text(
                 '¥${priceBreakdown.actualPayment.toStringAsFixed(2)}',
-                style: const TextStyle(
-                  fontSize: 18,
+                style: TextStyle(
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.bold,
                   color: AppColors.error,
                 ),
@@ -86,15 +87,15 @@ class OrderPriceCard extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(
-            fontSize: 13,
+          style: TextStyle(
+            fontSize: 13.sp,
             color: AppColors.lightTextSecondary,
           ),
         ),
         Text(
           value,
           style: TextStyle(
-            fontSize: 13,
+            fontSize: 13.sp,
             fontWeight: FontWeight.w500,
             color: valueColor,
           ),

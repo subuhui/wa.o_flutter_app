@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../data/models/order_detail_model.dart';
 
@@ -18,11 +19,11 @@ class OrderInfoCard extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-      padding: const EdgeInsets.all(16),
+      margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.w),
+      padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
         color: isDark ? AppColors.darkSurface : AppColors.lightSurface,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.r),
         border: Border.all(
           color: isDark ? AppColors.darkDivider : AppColors.lightDivider,
         ),
@@ -30,64 +31,62 @@ class OrderInfoCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             '订单信息',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: 12.w),
           // 订单编号 + 复制按钮
           Row(
             children: [
-              const Text(
+              Text(
                 '订单编号',
                 style: TextStyle(
-                  fontSize: 13,
+                  fontSize: 13.sp,
                   color: AppColors.lightTextSecondary,
                 ),
               ),
               const Spacer(),
               Text(
                 order.orderSn,
-                style:
-                    const TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w500),
               ),
-              const SizedBox(width: 8),
+              SizedBox(width: 8.w),
               InkWell(
                 onTap: () => onCopyOrderSn(order.orderSn),
-                borderRadius: BorderRadius.circular(4),
+                borderRadius: BorderRadius.circular(4.r),
                 child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                  padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.w),
                   decoration: BoxDecoration(
                     color: AppColors.primary.withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(4),
+                    borderRadius: BorderRadius.circular(4.r),
                   ),
-                  child: const Text(
+                  child: Text(
                     '复制',
-                    style: TextStyle(fontSize: 11, color: AppColors.primary),
+                    style: TextStyle(fontSize: 11.sp, color: AppColors.primary),
                   ),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: 8.w),
           _buildInfoRow('创建时间', order.createTime),
           if (order.payTime != null) ...[
-            const SizedBox(height: 8),
+            SizedBox(height: 8.w),
             _buildInfoRow('支付时间', order.payTime!),
           ],
           if (order.deliveryTime != null) ...[
-            const SizedBox(height: 8),
+            SizedBox(height: 8.w),
             _buildInfoRow('发货时间', order.deliveryTime!),
           ],
           if (order.logisticsSn != null) ...[
-            const SizedBox(height: 8),
+            SizedBox(height: 8.w),
             _buildInfoRow(
               '物流单号',
               '${order.logisticsCompany ?? ''} ${order.logisticsSn}',
             ),
           ],
-          const SizedBox(height: 8),
+          SizedBox(height: 8.w),
           _buildInfoRow('发票信息', '电子发票 (个人)'),
         ],
       ),
@@ -100,14 +99,14 @@ class OrderInfoCard extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(
-            fontSize: 13,
+          style: TextStyle(
+            fontSize: 13.sp,
             color: AppColors.lightTextSecondary,
           ),
         ),
         Text(
           value,
-          style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+          style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w500),
         ),
       ],
     );

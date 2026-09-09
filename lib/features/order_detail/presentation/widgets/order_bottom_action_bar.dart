@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/utils/toast_util.dart';
 import '../controllers/order_detail_controller.dart';
@@ -34,7 +35,7 @@ class OrderBottomActionBar extends ConsumerWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.w),
       decoration: BoxDecoration(
         color: isDark ? AppColors.darkSurface : AppColors.lightSurface,
         border: Border(
@@ -48,7 +49,7 @@ class OrderBottomActionBar extends ConsumerWidget {
         children: availableActions.map((buttonType) {
           final isOperating = runningOps.contains(buttonType.key);
           return Padding(
-            padding: const EdgeInsets.only(left: 8),
+            padding: EdgeInsets.only(left: 8.w),
             child: _buildButton(context, buttonType, isOperating),
           );
         }).toList(),
@@ -62,12 +63,12 @@ class OrderBottomActionBar extends ConsumerWidget {
     bool isOperating,
   ) {
     final child = isOperating
-        ? const SizedBox(
-            width: 16,
-            height: 16,
-            child: CircularProgressIndicator(strokeWidth: 2),
+        ? SizedBox(
+            width: 16.w,
+            height: 16.w,
+            child: const CircularProgressIndicator(strokeWidth: 2),
           )
-        : Text(type.label);
+        : Text(type.label, style: TextStyle(fontSize: 13.sp));
 
     final onPressed = isOperating ? null : () => _handleAction(context, type);
 
@@ -75,8 +76,8 @@ class OrderBottomActionBar extends ConsumerWidget {
       return FilledButton(
         onPressed: onPressed,
         style: FilledButton.styleFrom(
-          minimumSize: const Size(88, 36),
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          minimumSize: Size(88.w, 36.w),
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
         ),
         child: child,
       );
@@ -84,8 +85,8 @@ class OrderBottomActionBar extends ConsumerWidget {
       return OutlinedButton(
         onPressed: onPressed,
         style: OutlinedButton.styleFrom(
-          minimumSize: const Size(88, 36),
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          minimumSize: Size(88.w, 36.w),
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
         ),
         child: child,
       );

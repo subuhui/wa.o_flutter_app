@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:ui_demo/core/theme/app_colors.dart';
 import 'package:ui_demo/core/utils/toast_util.dart';
@@ -39,20 +40,20 @@ class PostListItem extends StatelessWidget {
         ],
       ),
       child: Card(
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+        margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.w),
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(16.w),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // 文章缩略图 (带缓存)
               AppImage(
                 url: 'https://picsum.photos/seed/${post.id}/120/120',
-                width: 56,
-                height: 56,
-                borderRadius: BorderRadius.circular(8),
+                width: 56.w,
+                height: 56.w,
+                borderRadius: BorderRadius.circular(8.r),
               ),
-              const SizedBox(width: 12),
+              SizedBox(width: 12.w),
               // 文章主体信息
               Expanded(
                 child: Column(
@@ -61,43 +62,43 @@ class PostListItem extends StatelessWidget {
                     Row(
                       children: [
                         Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 6, vertical: 2),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 6.w, vertical: 2.w),
                           decoration: BoxDecoration(
                             color: AppColors.primary.withValues(alpha: 0.1),
-                            borderRadius: BorderRadius.circular(4),
+                            borderRadius: BorderRadius.circular(4.r),
                           ),
                           child: Text(
                             '#${post.id}',
-                            style: const TextStyle(
+                            style: TextStyle(
                               color: AppColors.primary,
-                              fontSize: 11,
+                              fontSize: 11.sp,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
-                        const SizedBox(width: 6),
+                        SizedBox(width: 6.w),
                         Expanded(
                           child: Text(
                             post.title,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              fontSize: 15,
+                            style: TextStyle(
+                              fontSize: 15.sp,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 6),
+                    SizedBox(height: 6.w),
                     Text(
                       post.body,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: AppColors.lightTextSecondary,
-                        fontSize: 13,
+                        fontSize: 13.sp,
                         height: 1.3,
                       ),
                     ),

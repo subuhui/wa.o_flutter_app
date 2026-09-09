@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../data/models/order_detail_model.dart';
 import '../controllers/order_detail_controller.dart';
@@ -65,8 +66,8 @@ class OrderStatusHeader extends ConsumerWidget {
     };
 
     return Container(
-      margin: const EdgeInsets.all(16),
-      padding: const EdgeInsets.all(16),
+      margin: EdgeInsets.all(16.w),
+      padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: isDark
@@ -75,12 +76,12 @@ class OrderStatusHeader extends ConsumerWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.r),
         boxShadow: [
           BoxShadow(
             color: bgColors.first.withValues(alpha: 0.25),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
+            blurRadius: 10.r,
+            offset: Offset(0, 4.w),
           ),
         ],
       ),
@@ -89,13 +90,13 @@ class OrderStatusHeader extends ConsumerWidget {
         children: [
           Row(
             children: [
-              Icon(icon, size: 28, color: iconColor),
-              const SizedBox(width: 10),
+              Icon(icon, size: 28.w, color: iconColor),
+              SizedBox(width: 10.w),
               Expanded(
                 child: Text(
                   status.title,
-                  style: const TextStyle(
-                    fontSize: 20,
+                  style: TextStyle(
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
@@ -103,44 +104,44 @@ class OrderStatusHeader extends ConsumerWidget {
               ),
             ],
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: 8.w),
           Text(
             status == OrderStatus.unpaid
                 ? '请在 $remainingTime 内完成支付，超时订单将自动关闭'
                 : status.desc,
-            style: const TextStyle(fontSize: 13, color: Colors.white70),
+            style: TextStyle(fontSize: 13.sp, color: Colors.white70),
           ),
-          const Divider(color: Colors.white24, height: 24),
+          Divider(color: Colors.white24, height: 24.w),
           // 💡 演示切换工具栏：方便在界面上即时查看 5 种状态下的动态 UI 流转
-          const Text(
+          Text(
             '【调试面板】点击下方标签快速切换订单状态：',
             style: TextStyle(
-                fontSize: 11,
+                fontSize: 11.sp,
                 color: Colors.white60,
                 fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: 8.w),
           Wrap(
-            spacing: 6,
-            runSpacing: 6,
+            spacing: 6.w,
+            runSpacing: 6.w,
             children: OrderStatus.values
                 .where((e) => e != OrderStatus.unknown)
                 .map((targetStatus) {
               final isSelected = targetStatus == status;
               return InkWell(
                 onTap: () => actions.onSwitchMockStatus(targetStatus),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(12.r),
                 child: Container(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                      EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.w),
                   decoration: BoxDecoration(
                     color: isSelected ? Colors.white : Colors.black26,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                   ),
                   child: Text(
                     targetStatus.title,
                     style: TextStyle(
-                      fontSize: 11,
+                      fontSize: 11.sp,
                       fontWeight:
                           isSelected ? FontWeight.bold : FontWeight.normal,
                       color: isSelected ? AppColors.primary : Colors.white,

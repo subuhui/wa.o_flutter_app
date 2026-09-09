@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../data/models/order_detail_model.dart';
 
@@ -24,11 +25,11 @@ class OrderProductSection extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-      padding: const EdgeInsets.all(16),
+      margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.w),
+      padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
         color: isDark ? AppColors.darkSurface : AppColors.lightSurface,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.r),
         border: Border.all(
           color: isDark ? AppColors.darkDivider : AppColors.lightDivider,
         ),
@@ -38,34 +39,34 @@ class OrderProductSection extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Icon(Icons.storefront_outlined,
-                  size: 18, color: AppColors.primary),
-              const SizedBox(width: 8),
-              const Text(
+              Icon(Icons.storefront_outlined,
+                  size: 18.w, color: AppColors.primary),
+              SizedBox(width: 8.w),
+              Text(
                 '官方自营旗舰店',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
               ),
               const Spacer(),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.w),
                 decoration: BoxDecoration(
                   color: AppColors.primary.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(4),
+                  borderRadius: BorderRadius.circular(4.r),
                 ),
-                child: const Text(
+                child: Text(
                   '极速发货',
-                  style: TextStyle(fontSize: 10, color: AppColors.primary),
+                  style: TextStyle(fontSize: 10.sp, color: AppColors.primary),
                 ),
               ),
             ],
           ),
-          const Divider(height: 20),
+          Divider(height: 20.w),
           // 商品列表
           ListView.separated(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: items.length,
-            separatorBuilder: (_, __) => const SizedBox(height: 12),
+            separatorBuilder: (_, __) => SizedBox(height: 12.w),
             itemBuilder: (context, index) {
               final item = items[index];
               return _buildProductItem(item, isDark);
@@ -73,7 +74,7 @@ class OrderProductSection extends StatelessWidget {
           ),
           // 折叠/展开按钮
           if (hasMultipleProducts) ...[
-            const Divider(height: 20),
+            Divider(height: 20.w),
             Center(
               child: TextButton.icon(
                 onPressed: onToggleExpand,
@@ -85,11 +86,11 @@ class OrderProductSection extends StatelessWidget {
                   isExpanded
                       ? Icons.keyboard_arrow_up
                       : Icons.keyboard_arrow_down,
-                  size: 18,
+                  size: 18.w,
                 ),
                 label: Text(
                   isExpanded ? '收起商品' : '展开剩余 $hiddenCount 件商品',
-                  style: const TextStyle(fontSize: 12),
+                  style: TextStyle(fontSize: 12.sp),
                 ),
               ),
             ),
@@ -105,18 +106,18 @@ class OrderProductSection extends StatelessWidget {
       children: [
         // 商品图片占位卡片
         Container(
-          width: 72,
-          height: 72,
+          width: 72.w,
+          height: 72.w,
           decoration: BoxDecoration(
             color: isDark ? AppColors.darkBackground : const Color(0xFFF5F5F5),
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(8.r),
             border: Border.all(
               color: isDark ? AppColors.darkDivider : AppColors.lightDivider,
             ),
           ),
-          child: const Icon(Icons.devices, size: 32, color: Colors.grey),
+          child: Icon(Icons.devices, size: 32.w, color: Colors.grey),
         ),
-        const SizedBox(width: 12),
+        SizedBox(width: 12.w),
         // 标题、规格与价格
         Expanded(
           child: Column(
@@ -126,38 +127,37 @@ class OrderProductSection extends StatelessWidget {
                 item.title,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style:
-                    const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+                style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w600),
               ),
-              const SizedBox(height: 4),
+              SizedBox(height: 4.w),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.w),
                 decoration: BoxDecoration(
                   color: isDark ? Colors.white10 : Colors.black.withAlpha(8),
-                  borderRadius: BorderRadius.circular(4),
+                  borderRadius: BorderRadius.circular(4.r),
                 ),
                 child: Text(
                   item.spec,
-                  style: const TextStyle(
-                      fontSize: 11, color: AppColors.lightTextSecondary),
+                  style: TextStyle(
+                      fontSize: 11.sp, color: AppColors.lightTextSecondary),
                 ),
               ),
-              const SizedBox(height: 6),
+              SizedBox(height: 6.w),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     '¥${item.price.toStringAsFixed(2)}',
-                    style: const TextStyle(
-                      fontSize: 14,
+                    style: TextStyle(
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.bold,
                       color: AppColors.error,
                     ),
                   ),
                   Text(
                     'x${item.quantity}',
-                    style: const TextStyle(
-                        fontSize: 12, color: AppColors.lightTextSecondary),
+                    style: TextStyle(
+                        fontSize: 12.sp, color: AppColors.lightTextSecondary),
                   ),
                 ],
               ),

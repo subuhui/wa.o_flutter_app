@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ui_demo/core/base/base_page.dart';
 import 'package:ui_demo/core/router/route_paths.dart';
@@ -20,42 +21,43 @@ class HomeActionBar extends ConsumerWidget {
         ref.watch(themeModeProvider.select((mode) => mode == ThemeMode.dark));
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.w),
       child: Wrap(
-        spacing: 8,
-        runSpacing: 8,
+        spacing: 8.w,
+        runSpacing: 8.w,
         children: [
           ActionChip(
-            avatar: Icon(isDark ? Icons.light_mode : Icons.dark_mode, size: 16),
+            avatar:
+                Icon(isDark ? Icons.light_mode : Icons.dark_mode, size: 16.w),
             label: Text(isDark ? '切亮色' : '切暗色'),
             onPressed: () => ref.read(themeModeProvider.notifier).toggleTheme(),
           ),
           ActionChip(
-            avatar: const Icon(Icons.refresh, size: 16),
+            avatar: Icon(Icons.refresh, size: 16.w),
             label: const Text('刷新数据'),
             onPressed: () =>
                 ref.read(homeControllerProvider.notifier).loadPosts(),
           ),
           ActionChip(
-            avatar: const Icon(Icons.hourglass_top, size: 16),
+            avatar: Icon(Icons.hourglass_top, size: 16.w),
             label: const Text('全局菊花'),
             onPressed: () =>
                 ref.read(homeControllerProvider.notifier).simulateSubmit(),
           ),
           ActionChip(
-            avatar: const Icon(Icons.inbox_outlined, size: 16),
+            avatar: Icon(Icons.inbox_outlined, size: 16.w),
             label: const Text('模拟空态'),
             onPressed: () =>
                 ref.read(homeControllerProvider.notifier).mockEmpty(),
           ),
           ActionChip(
-            avatar: const Icon(Icons.error_outline, size: 16),
+            avatar: Icon(Icons.error_outline, size: 16.w),
             label: const Text('模拟异常'),
             onPressed: () =>
                 ref.read(homeControllerProvider.notifier).mockError(),
           ),
           ActionChip(
-            avatar: const Icon(Icons.phone_iphone, size: 16),
+            avatar: Icon(Icons.phone_iphone, size: 16.w),
             label: const Text('设备信息'),
             onPressed: () {
               ToastUtil.show(
@@ -64,27 +66,27 @@ class HomeActionBar extends ConsumerWidget {
             },
           ),
           ActionChip(
-            avatar: const Icon(Icons.camera_alt_outlined, size: 16),
+            avatar: Icon(Icons.camera_alt_outlined, size: 16.w),
             label: const Text('申请相机'),
             onPressed: () => PermissionUtil.requestCamera(),
           ),
           ActionChip(
-            avatar: const Icon(Icons.open_in_browser, size: 16),
+            avatar: Icon(Icons.open_in_browser, size: 16.w),
             label: const Text('打开官网'),
             onPressed: () => UrlUtil.launchBrowser('https://flutter.dev'),
           ),
           ActionChip(
-            avatar: const Icon(Icons.layers_outlined, size: 16),
+            avatar: Icon(Icons.layers_outlined, size: 16.w),
             label: const Text('BaseState页'),
             onPressed: () => context.push(RoutePaths.detail),
           ),
           ActionChip(
-            avatar: const Icon(Icons.receipt_long, size: 16),
+            avatar: Icon(Icons.receipt_long, size: 16.w),
             label: const Text('订单详情(State+Actions)'),
             onPressed: () => context.push(RoutePaths.orderDetail),
           ),
           ActionChip(
-            avatar: const Icon(Icons.chat_bubble_outline, size: 16),
+            avatar: Icon(Icons.chat_bubble_outline, size: 16.w),
             label: const Text('BaseDialog'),
             onPressed: () {
               BaseDialog.show<void>(
@@ -95,19 +97,19 @@ class HomeActionBar extends ConsumerWidget {
             },
           ),
           ActionChip(
-            avatar: const Icon(Icons.vertical_align_bottom, size: 16),
+            avatar: Icon(Icons.vertical_align_bottom, size: 16.w),
             label: const Text('Base抽屉'),
             onPressed: () {
               BaseBottomSheet.show<void>(
                 context: context,
                 title: '系统面板 (BaseBottomSheet)',
                 child: Padding(
-                  padding: const EdgeInsets.all(24),
+                  padding: EdgeInsets.all(24.w),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       const Text('底部半屏抽屉，已自动适配安全底部防遮挡。'),
-                      const SizedBox(height: 16),
+                      SizedBox(height: 16.w),
                       FilledButton(
                         onPressed: () => Navigator.pop(context),
                         child: const Text('关闭抽屉'),

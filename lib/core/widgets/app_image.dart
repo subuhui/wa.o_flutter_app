@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../theme/app_colors.dart';
 
@@ -56,11 +57,11 @@ class AppImage extends StatelessWidget {
               width: width,
               height: height,
               color: AppColors.lightDivider,
-              child: const Center(
+              child: Center(
                 child: SizedBox(
-                  width: 20,
-                  height: 20,
-                  child: CircularProgressIndicator.adaptive(strokeWidth: 2),
+                  width: 20.w,
+                  height: 20.w,
+                  child: CircularProgressIndicator.adaptive(strokeWidth: 2.w),
                 ),
               ),
             ),
@@ -70,10 +71,10 @@ class AppImage extends StatelessWidget {
               width: width,
               height: height,
               color: AppColors.lightDivider,
-              child: const Icon(
+              child: Icon(
                 Icons.broken_image_outlined,
                 color: AppColors.lightTextHint,
-                size: 24,
+                size: 24.w,
               ),
             ),
       );
@@ -89,10 +90,10 @@ class AppImage extends StatelessWidget {
               width: width,
               height: height,
               color: AppColors.lightDivider,
-              child: const Icon(
+              child: Icon(
                 Icons.broken_image_outlined,
                 color: AppColors.lightTextHint,
-                size: 24,
+                size: 24.w,
               ),
             ),
       );

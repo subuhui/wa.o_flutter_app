@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ui_demo/core/base/base_page.dart';
 
 /// 示例详情页：演示 BaseConsumerStatefulWidget 与 BaseConsumerState 的继承使用
@@ -35,7 +36,7 @@ class _DemoStatefulPageState extends BaseConsumerState<DemoStatefulPage> {
   Widget? buildBottomBar(BuildContext context) {
     // 💡 底部安全操作栏：自动垫高防遮挡
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.w),
       child: FilledButton(
         onPressed: () {
           showLoading(msg: '正在保存...');
@@ -55,16 +56,16 @@ class _DemoStatefulPageState extends BaseConsumerState<DemoStatefulPage> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text(
+          Text(
             '此页面继承自 BaseConsumerStatefulWidget',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: 12.w),
           Text(
             '本地状态计数值: $_counter',
-            style: const TextStyle(fontSize: 14),
+            style: TextStyle(fontSize: 14.sp),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.w),
           ElevatedButton.icon(
             onPressed: () {
               setState(() {

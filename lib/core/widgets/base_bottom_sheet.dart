@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../theme/app_colors.dart';
 
 /// 全局统一半屏底部抽屉组件 (BaseBottomSheet)
@@ -63,40 +64,40 @@ class BaseBottomSheet extends StatelessWidget {
       decoration: BoxDecoration(
         color: backgroundColor ??
             (isDark ? AppColors.darkSurface : AppColors.lightSurface),
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const SizedBox(height: 10),
+          SizedBox(height: 10.w),
           // 1. 顶部拖拽指示条
           Container(
-            width: 40,
-            height: 4,
+            width: 40.w,
+            height: 4.w,
             decoration: BoxDecoration(
               color: isDark ? AppColors.darkDivider : AppColors.lightDivider,
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(2.r),
             ),
           ),
 
           // 2. 标题栏与关闭按钮
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.w),
             child: Row(
               children: [
                 Expanded(
                   child: titleWidget ??
                       Text(
                         title ?? '',
-                        style: const TextStyle(
-                          fontSize: 17,
+                        style: TextStyle(
+                          fontSize: 17.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                 ),
                 if (showCloseButton)
                   IconButton(
-                    icon: const Icon(Icons.close, size: 20),
+                    icon: Icon(Icons.close, size: 20.w),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
               ],

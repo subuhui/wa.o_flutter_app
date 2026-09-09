@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:ui_demo/core/base/base_page.dart';
 import 'package:ui_demo/core/network/app_exceptions.dart';
 import 'package:ui_demo/core/theme/app_theme.dart';
@@ -57,10 +58,20 @@ void main() {
       expect(authEx.code, 401);
     });
 
+    Widget buildTestApp({required Widget child, ThemeData? theme}) {
+      return ScreenUtilInit(
+        designSize: const Size(375, 812),
+        builder: (context, _) => MaterialApp(
+          theme: theme ?? AppTheme.lightTheme,
+          home: child,
+        ),
+      );
+    }
+
     testWidgets('AppStateLayout 成功状态正常展示子组件', (WidgetTester tester) async {
       await tester.pumpWidget(
-        const MaterialApp(
-          home: Scaffold(
+        buildTestApp(
+          child: const Scaffold(
             body: AppStateLayout(
               status: ViewStatus.success,
               child: Text('核心业务内容展示'),
@@ -76,9 +87,9 @@ void main() {
       bool retryClicked = false;
 
       await tester.pumpWidget(
-        MaterialApp(
+        buildTestApp(
           theme: AppTheme.lightTheme,
-          home: Scaffold(
+          child: Scaffold(
             body: AppStateLayout(
               status: ViewStatus.error,
               errorMessage: '加载失败，请重试',
@@ -102,9 +113,9 @@ void main() {
 
     testWidgets('AppRefresher 正常渲染子组件内容', (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
+        buildTestApp(
           theme: AppTheme.lightTheme,
-          home: const Scaffold(
+          child: const Scaffold(
             body: AppRefresher(
               child: Text('可刷新列表内容'),
             ),
@@ -117,9 +128,9 @@ void main() {
 
     testWidgets('BaseScaffold 正常渲染标题、安全底部与主体内容', (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
+        buildTestApp(
           theme: AppTheme.lightTheme,
-          home: const BaseScaffold(
+          child: const BaseScaffold(
             title: '测试页面标题',
             bottomBar: Text('固定安全底部栏'),
             body: Text('页面主体'),
@@ -135,9 +146,9 @@ void main() {
     testWidgets('DemoStatefulPage 基于 BaseConsumerState 正常渲染与自增交互',
         (WidgetTester tester) async {
       await tester.pumpWidget(
-        const ProviderScope(
-          child: MaterialApp(
-            home: DemoStatefulPage(),
+        ProviderScope(
+          child: buildTestApp(
+            child: const DemoStatefulPage(),
           ),
         ),
       );
@@ -161,9 +172,9 @@ void main() {
 
     testWidgets('BaseDialog 组件正常渲染标题、内容与确定按钮', (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
+        buildTestApp(
           theme: AppTheme.lightTheme,
-          home: const Scaffold(
+          child: const Scaffold(
             body: BaseDialog(
               title: '测试弹窗标题',
               content: '测试弹窗说明内容',
@@ -180,9 +191,9 @@ void main() {
 
     testWidgets('BaseBottomSheet 组件正常渲染标题与内容', (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
+        buildTestApp(
           theme: AppTheme.lightTheme,
-          home: const Scaffold(
+          child: const Scaffold(
             body: BaseBottomSheet(
               title: '测试抽屉标题',
               child: Text('抽屉核心内容'),

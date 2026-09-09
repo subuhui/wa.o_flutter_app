@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:ui_demo/core/theme/app_theme.dart';
 import 'package:ui_demo/features/order_detail/data/models/order_detail_model.dart';
@@ -190,9 +191,12 @@ void main() {
 
       await tester.pumpWidget(
         ProviderScope(
-          child: MaterialApp(
-            theme: AppTheme.lightTheme,
-            home: const OrderDetailPage(orderId: 'WIDGET_TEST_001'),
+          child: ScreenUtilInit(
+            designSize: const Size(375, 812),
+            builder: (context, child) => MaterialApp(
+              theme: AppTheme.lightTheme,
+              home: const OrderDetailPage(orderId: 'WIDGET_TEST_001'),
+            ),
           ),
         ),
       );
