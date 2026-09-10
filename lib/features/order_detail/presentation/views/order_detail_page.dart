@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/base/base_page.dart';
-import '../../../../core/theme/app_colors.dart';
 import '../../../../core/utils/toast_util.dart';
 import '../../../../core/widgets/app_refresher.dart';
 import '../../../../core/widgets/app_state_layout.dart';
+import '../../data/models/order_detail_model.dart';
 import '../controllers/order_detail_controller.dart';
 import '../state/order_detail_actions.dart';
 import '../widgets/order_address_card.dart';
@@ -66,7 +66,23 @@ class OrderDetailPage extends ConsumerWidget {
                 : ViewStatus.empty;
 
     return BaseScaffold(
-      title: '订单详情 (State+Actions)',
+      title: '订单详情',
+      actions: [
+        PopupMenuButton<OrderStatus>(
+          tooltip: '切换订单状态',
+          icon: const Icon(Icons.more_horiz),
+          onSelected: actions.onSwitchMockStatus,
+          itemBuilder: (context) => OrderStatus.values
+              .where((status) => status != OrderStatus.unknown)
+              .map(
+                (status) => PopupMenuItem<OrderStatus>(
+                  value: status,
+                  child: Text('预览“${status.title}”状态'),
+                ),
+              )
+              .toList(),
+        ),
+      ],
       // 💡 固定安全底部栏：已自适应 iPhone 底部安全区域
       bottomBar: OrderBottomActionBar(orderId: orderId, actions: actions),
       body: AppStateLayout(
@@ -80,16 +96,13 @@ class OrderDetailPage extends ConsumerWidget {
                 child: ListView(
                   padding: EdgeInsets.only(bottom: 24.w),
                   children: [
-                    // 1. 顶部架构说明卡片 (用于技术演示对照)
-                    _buildArchitectureTip(context),
+                    // 1. 状态横幅与倒计时 (局部监听倒计时，不引起整页重绘)
+                    OrderStatusHeader(orderId: orderId),
 
-                    // 2. 状态横幅与倒计时 (局部监听倒计时，不引起整页重绘)
-                    OrderStatusHeader(orderId: orderId, actions: actions),
-
-                    // 3. 收货地址 (纯 StatelessWidget)
+                    // 2. 收货地址 (纯 StatelessWidget)
                     OrderAddressCard(address: order.address),
 
-                    // 4. 商品清单 (局部监听展开/折叠状态)
+                    // 3. 商品清单 (局部监听展开/折叠状态)
                     Consumer(
                       builder: (context, ref, _) {
                         final isExpanded = ref.watch(
@@ -119,10 +132,10 @@ class OrderDetailPage extends ConsumerWidget {
                       },
                     ),
 
-                    // 5. 费用明细 (纯 StatelessWidget)
+                    // 4. 费用明细 (纯 StatelessWidget)
                     OrderPriceCard(priceBreakdown: order.priceBreakdown),
 
-                    // 6. 订单信息与一键复制 (纯 StatelessWidget)
+                    // 5. 订单信息与一键复制 (纯 StatelessWidget)
                     OrderInfoCard(
                       order: order,
                       onCopyOrderSn: actions.onCopyOrderSn,
@@ -130,39 +143,6 @@ class OrderDetailPage extends ConsumerWidget {
                   ],
                 ),
               ),
-      ),
-    );
-  }
-
-  Widget _buildArchitectureTip(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
-    return Container(
-      margin: EdgeInsets.fromLTRB(16.w, 12.w, 16.w, 0),
-      padding: EdgeInsets.all(12.w),
-      decoration: BoxDecoration(
-        color: isDark
-            ? AppColors.primary.withValues(alpha: 0.15)
-            : AppColors.primary.withValues(alpha: 0.08),
-        borderRadius: BorderRadius.circular(10.r),
-        border: Border.all(color: AppColors.primary.withValues(alpha: 0.3)),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(Icons.tips_and_updates, size: 18.w, color: AppColors.primary),
-          SizedBox(width: 8.w),
-          Expanded(
-            child: Text(
-              '架构范式：Riverpod 到 Page 为止，UI 子组件均为纯 StatelessWidget。动作由 OrderDetailActions 回调包统一分发，倒计时通过 select 隔离秒级局部重绘。',
-              style: TextStyle(
-                fontSize: 12.sp,
-                color: AppColors.primary,
-                height: 1.35,
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

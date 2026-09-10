@@ -45,12 +45,14 @@ class OrderBottomActionBar extends ConsumerWidget {
         ),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: availableActions.map((buttonType) {
+        children: availableActions.indexed.map((entry) {
+          final (index, buttonType) = entry;
           final isOperating = runningOps.contains(buttonType.key);
-          return Padding(
-            padding: EdgeInsets.only(left: 8.w),
-            child: _buildButton(context, buttonType, isOperating),
+          return Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(left: index == 0 ? 0 : 12.w),
+              child: _buildButton(context, buttonType, isOperating),
+            ),
           );
         }).toList(),
       ),
@@ -62,13 +64,25 @@ class OrderBottomActionBar extends ConsumerWidget {
     OrderBottomButtonType type,
     bool isOperating,
   ) {
-    final child = isOperating
-        ? SizedBox(
-            width: 16.w,
-            height: 16.w,
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final label = Text(
+      type.label,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600),
+    );
+    final child = Stack(
+      alignment: Alignment.center,
+      children: [
+        Opacity(opacity: isOperating ? 0 : 1, child: label),
+        if (isOperating)
+          SizedBox(
+            width: 18.w,
+            height: 18.w,
             child: const CircularProgressIndicator(strokeWidth: 2),
-          )
-        : Text(type.label, style: TextStyle(fontSize: 13.sp));
+          ),
+      ],
+    );
 
     final onPressed = isOperating ? null : () => _handleAction(context, type);
 
@@ -76,8 +90,15 @@ class OrderBottomActionBar extends ConsumerWidget {
       return FilledButton(
         onPressed: onPressed,
         style: FilledButton.styleFrom(
-          minimumSize: Size(88.w, 36.w),
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          minimumSize: Size.fromHeight(48.w),
+          backgroundColor: AppColors.primaryPressed,
+          foregroundColor: Colors.white,
+          disabledBackgroundColor:
+              isDark ? AppColors.darkDivider : AppColors.lightDivider,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.r),
+          ),
+          padding: EdgeInsets.symmetric(horizontal: 8.w),
         ),
         child: child,
       );
@@ -85,8 +106,17 @@ class OrderBottomActionBar extends ConsumerWidget {
       return OutlinedButton(
         onPressed: onPressed,
         style: OutlinedButton.styleFrom(
-          minimumSize: Size(88.w, 36.w),
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          minimumSize: Size.fromHeight(48.w),
+          foregroundColor:
+              isDark ? AppColors.primaryDarkTheme : AppColors.primaryPressed,
+          side: BorderSide(
+            width: 1.w,
+            color: isDark ? AppColors.darkDivider : AppColors.lightDivider,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.r),
+          ),
+          padding: EdgeInsets.symmetric(horizontal: 8.w),
         ),
         child: child,
       );

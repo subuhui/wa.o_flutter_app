@@ -8,6 +8,11 @@ class AppColors {
   static const Color primary = Color(0xFF2563EB); // 经典科技蓝
   static const Color primaryLight = Color(0xFF60A5FA);
   static const Color primaryDark = Color(0xFF1D4ED8);
+  static const Color primaryStrong = Color(0xFF3B82F6);
+  static const Color primaryPressed = Color(0xFF2563EB);
+  static const Color primarySoft = Color(0xFFEFF6FF);
+  static const Color primarySurface = Color(0xFFDBEAFE);
+  static const Color primaryDarkTheme = Color(0xFF93C5FD);
 
   static const Color secondary = Color(0xFF10B981); // 辅助翠绿
   static const Color accent = Color(0xFFF59E0B); // 强调琥珀黄

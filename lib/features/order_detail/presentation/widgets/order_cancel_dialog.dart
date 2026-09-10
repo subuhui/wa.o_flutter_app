@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/widgets/base_bottom_sheet.dart';
 
 /// 取消订单原因选择半屏抽屉
@@ -37,7 +38,7 @@ class _OrderCancelDialogState extends State<OrderCancelDialog> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.w),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.w),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -62,13 +63,23 @@ class _OrderCancelDialogState extends State<OrderCancelDialog> {
           SizedBox(height: 16.w),
           SizedBox(
             width: double.infinity,
-            height: 44.w,
+            height: 48.w,
             child: FilledButton(
               onPressed: () {
                 Navigator.of(context).pop();
                 widget.onConfirm(_selectedReason);
               },
-              child: Text('确认取消订单', style: TextStyle(fontSize: 14.sp)),
+              style: FilledButton.styleFrom(
+                backgroundColor: AppColors.primaryPressed,
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.r),
+                ),
+              ),
+              child: Text(
+                '确认取消订单',
+                style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
+              ),
             ),
           ),
           SizedBox(height: 12.w),

@@ -12,6 +12,12 @@ class OrderAddressCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryTextColor =
+        isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final secondaryTextColor =
+        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final brandColor =
+        isDark ? AppColors.primaryDarkTheme : AppColors.primaryStrong;
 
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.w),
@@ -29,13 +35,15 @@ class OrderAddressCard extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(8.w),
             decoration: BoxDecoration(
-              color: AppColors.primary.withValues(alpha: 0.1),
+              color: isDark
+                  ? AppColors.primaryDarkTheme.withValues(alpha: 0.14)
+                  : AppColors.primarySurface,
               shape: BoxShape.circle,
             ),
             child: Icon(
               Icons.location_on,
               size: 20.w,
-              color: AppColors.primary,
+              color: brandColor,
             ),
           ),
           SizedBox(width: 12.w),
@@ -43,29 +51,35 @@ class OrderAddressCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
+                Wrap(
+                  spacing: 8.w,
+                  runSpacing: 4.w,
+                  crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
                     Text(
                       address.recipientName,
-                      style: TextStyle(
-                        fontSize: 15.sp,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                            fontSize: 16.sp,
+                            color: primaryTextColor,
+                          ),
                     ),
-                    SizedBox(width: 10.w),
                     Text(
                       address.recipientPhone,
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        color: AppColors.lightTextSecondary,
-                      ),
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            fontSize: 14.sp,
+                            color: secondaryTextColor,
+                          ),
                     ),
                   ],
                 ),
                 SizedBox(height: 6.w),
                 Text(
                   address.fullAddress,
-                  style: TextStyle(fontSize: 13.sp, height: 1.3),
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        fontSize: 14.sp,
+                        color: primaryTextColor,
+                        height: 1.4,
+                      ),
                 ),
               ],
             ),

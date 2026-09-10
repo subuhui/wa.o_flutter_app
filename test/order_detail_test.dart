@@ -182,7 +182,7 @@ void main() {
     });
 
     testWidgets('OrderDetailPage 正常加载与展示核心内容部件测试', (WidgetTester tester) async {
-      tester.view.physicalSize = const Size(800, 2000);
+      tester.view.physicalSize = const Size(375, 812);
       tester.view.devicePixelRatio = 1.0;
       addTearDown(() {
         tester.view.resetPhysicalSize();
@@ -204,9 +204,9 @@ void main() {
       // 初始等待骨架加载完成
       await tester.pump(const Duration(milliseconds: 500));
 
-      // 验证标题与架构提示卡片
-      expect(find.text('订单详情 (State+Actions)'), findsOneWidget);
-      expect(find.textContaining('架构范式：Riverpod 到 Page 为止'), findsOneWidget);
+      // 验证业务标题与状态预览入口
+      expect(find.text('订单详情'), findsOneWidget);
+      expect(find.byTooltip('切换订单状态'), findsOneWidget);
 
       // 验证订单状态横幅
       expect(find.text('待付款'), findsWidgets);
