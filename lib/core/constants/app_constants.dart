@@ -5,7 +5,7 @@ class AppConstants {
   AppConstants._();
 
   /// 应用基本信息
-  static const String appName = 'UI Demo';
+  static const String appName = 'wa.o_flutter';
   static const String appVersion = '1.0.0';
 
   /// 屏幕适配设计稿基准尺寸 (宽 x 高，如 iPhone X: 375 x 812)

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ui_demo/core/base/base_page.dart';
-import 'package:ui_demo/core/utils/device_util.dart';
-import 'package:ui_demo/core/utils/permission_util.dart';
-import 'package:ui_demo/core/utils/toast_util.dart';
-import 'package:ui_demo/core/utils/url_util.dart';
+import 'package:wa_o_flutter/core/base/base_page.dart';
+import 'package:wa_o_flutter/core/utils/device_util.dart';
+import 'package:wa_o_flutter/core/utils/permission_util.dart';
+import 'package:wa_o_flutter/core/utils/toast_util.dart';
+import 'package:wa_o_flutter/core/utils/url_util.dart';
 
 /// 设备、权限与外部应用能力演示。
 class SystemDemoPage extends StatelessWidget {

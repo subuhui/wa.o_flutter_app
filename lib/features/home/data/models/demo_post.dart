@@ -1,4 +1,4 @@
-import 'package:ui_demo/core/base/base_model.dart';
+import 'package:wa_o_flutter/core/base/base_model.dart';
 
 /// 示例文章数据实体 (继承自 BaseModel)
 class DemoPost extends BaseModel {

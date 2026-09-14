@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ui_demo/core/base/base_page.dart';
-import 'package:ui_demo/core/network/app_exceptions.dart';
-import 'package:ui_demo/core/theme/app_theme.dart';
-import 'package:ui_demo/core/widgets/app_refresher.dart';
-import 'package:ui_demo/core/widgets/app_state_layout.dart';
-import 'package:ui_demo/features/home/data/models/demo_post.dart';
-import 'package:ui_demo/features/home/presentation/views/demo_stateful_page.dart';
-import 'package:ui_demo/features/home/presentation/widgets/home_feature_card.dart';
+import 'package:wa_o_flutter/core/base/base_page.dart';
+import 'package:wa_o_flutter/core/network/app_exceptions.dart';
+import 'package:wa_o_flutter/core/theme/app_theme.dart';
+import 'package:wa_o_flutter/core/widgets/app_refresher.dart';
+import 'package:wa_o_flutter/core/widgets/app_state_layout.dart';
+import 'package:wa_o_flutter/features/home/data/models/demo_post.dart';
+import 'package:wa_o_flutter/features/home/presentation/views/demo_stateful_page.dart';
+import 'package:wa_o_flutter/features/home/presentation/widgets/home_feature_card.dart';
 
 void main() {
   group('基础架构单元测试与小部件测试', () {

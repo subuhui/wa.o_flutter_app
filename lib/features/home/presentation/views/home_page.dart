@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ui_demo/core/base/base_page.dart';
-import 'package:ui_demo/core/router/route_paths.dart';
-import 'package:ui_demo/core/theme/app_colors.dart';
-import 'package:ui_demo/core/theme/theme_provider.dart';
-import 'package:ui_demo/features/home/presentation/widgets/home_feature_card.dart';
+import 'package:wa_o_flutter/core/base/base_page.dart';
+import 'package:wa_o_flutter/core/router/route_paths.dart';
+import 'package:wa_o_flutter/core/theme/app_colors.dart';
+import 'package:wa_o_flutter/core/theme/theme_provider.dart';
+import 'package:wa_o_flutter/features/home/presentation/widgets/home_feature_card.dart';
 
 /// 应用功能概览页，只保留分类入口，具体演示在各自页面完成。
 class HomePage extends ConsumerWidget {
@@ -19,7 +19,7 @@ class HomePage extends ConsumerWidget {
     );
 
     return BaseScaffold(
-      title: 'UI Demo',
+      title: 'wa.o_flutter',
       actions: [
         IconButton(
           tooltip: isDark ? '切换到亮色模式' : '切换到暗色模式',

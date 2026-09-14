@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ui_demo/core/widgets/app_refresher.dart';
+import 'package:wa_o_flutter/core/widgets/app_refresher.dart';
 import '../controllers/home_controller.dart';
 import 'post_list_item.dart';
 

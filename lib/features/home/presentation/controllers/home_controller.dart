@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ui_demo/core/base/base_pagination_notifier.dart';
-import 'package:ui_demo/core/base/view_state.dart';
-import 'package:ui_demo/core/utils/toast_util.dart';
-import 'package:ui_demo/features/home/data/models/demo_post.dart';
-import 'package:ui_demo/features/home/data/repositories/demo_repo.dart';
+import 'package:wa_o_flutter/core/base/base_pagination_notifier.dart';
+import 'package:wa_o_flutter/core/base/view_state.dart';
+import 'package:wa_o_flutter/core/utils/toast_util.dart';
+import 'package:wa_o_flutter/features/home/data/models/demo_post.dart';
+import 'package:wa_o_flutter/features/home/data/repositories/demo_repo.dart';
 
 /// 首页状态控制器 (直接继承 BasePaginationNotifier，零样板代码实现全套分页与刷新)
 class HomeController extends BasePaginationNotifier<DemoPost> {

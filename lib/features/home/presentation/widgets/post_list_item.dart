@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:ui_demo/core/theme/app_colors.dart';
-import 'package:ui_demo/core/utils/toast_util.dart';
-import 'package:ui_demo/core/widgets/app_image.dart';
+import 'package:wa_o_flutter/core/theme/app_colors.dart';
+import 'package:wa_o_flutter/core/utils/toast_util.dart';
+import 'package:wa_o_flutter/core/widgets/app_image.dart';
 import '../../data/models/demo_post.dart';
 
 /// 独立子组件：单条文章卡片 (集成 Slidable 侧滑菜单与 AppImage 图片缓存)

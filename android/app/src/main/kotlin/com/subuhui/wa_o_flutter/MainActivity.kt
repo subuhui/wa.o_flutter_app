@@ -1,4 +1,4 @@
-package com.subuhui.ui_demo
+package com.subuhui.wa_o_flutter
 
 import io.flutter.embedding.android.FlutterActivity
 

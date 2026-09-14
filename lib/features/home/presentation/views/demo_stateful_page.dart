@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ui_demo/core/base/base_page.dart';
+import 'package:wa_o_flutter/core/base/base_page.dart';
 
 /// 示例详情页：演示 BaseConsumerStatefulWidget 与 BaseConsumerState 的继承使用
 class DemoStatefulPage extends BaseConsumerStatefulWidget {

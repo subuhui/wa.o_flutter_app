@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ui_demo/core/theme/app_theme.dart';
-import 'package:ui_demo/features/order_detail/data/models/order_detail_model.dart';
-import 'package:ui_demo/features/order_detail/data/repositories/order_detail_repository.dart';
-import 'package:ui_demo/features/order_detail/presentation/controllers/order_detail_controller.dart';
-import 'package:ui_demo/features/order_detail/presentation/state/order_detail_actions.dart';
-import 'package:ui_demo/features/order_detail/presentation/state/order_detail_state.dart';
-import 'package:ui_demo/features/order_detail/presentation/views/order_detail_page.dart';
+import 'package:wa_o_flutter/core/theme/app_theme.dart';
+import 'package:wa_o_flutter/features/order_detail/data/models/order_detail_model.dart';
+import 'package:wa_o_flutter/features/order_detail/data/repositories/order_detail_repository.dart';
+import 'package:wa_o_flutter/features/order_detail/presentation/controllers/order_detail_controller.dart';
+import 'package:wa_o_flutter/features/order_detail/presentation/state/order_detail_actions.dart';
+import 'package:wa_o_flutter/features/order_detail/presentation/state/order_detail_state.dart';
+import 'package:wa_o_flutter/features/order_detail/presentation/views/order_detail_page.dart';
 
 void main() {
   group('订单详情 State + Actions 架构单元测试与部件测试', () {

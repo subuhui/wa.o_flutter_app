@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ui_demo/core/base/base_repository.dart';
-import 'package:ui_demo/core/constants/api_constants.dart';
-import 'package:ui_demo/core/network/http_client_provider.dart';
-import 'package:ui_demo/features/home/data/models/demo_post.dart';
+import 'package:wa_o_flutter/core/base/base_repository.dart';
+import 'package:wa_o_flutter/core/constants/api_constants.dart';
+import 'package:wa_o_flutter/core/network/http_client_provider.dart';
+import 'package:wa_o_flutter/features/home/data/models/demo_post.dart';
 
 /// 首页数据仓库接口规范
 abstract class DemoRepository {

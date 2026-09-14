@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ui_demo/core/base/base_page.dart';
-import 'package:ui_demo/core/router/route_paths.dart';
-import 'package:ui_demo/core/utils/toast_util.dart';
+import 'package:wa_o_flutter/core/base/base_page.dart';
+import 'package:wa_o_flutter/core/router/route_paths.dart';
+import 'package:wa_o_flutter/core/utils/toast_util.dart';
 
 /// 项目基础页面与弹层组件入口。
 class ComponentDemoPage extends StatelessWidget {

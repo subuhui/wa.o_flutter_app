@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ui_demo/core/theme/app_colors.dart';
+import 'package:wa_o_flutter/core/theme/app_colors.dart';
 
 /// 全局统一封装的下拉刷新与上拉加载组件 (基于 easy_refresh)
 class AppRefresher extends StatelessWidget {

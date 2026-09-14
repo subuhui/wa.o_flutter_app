@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ui_demo/core/base/base_page.dart';
-import 'package:ui_demo/core/widgets/app_state_layout.dart';
-import 'package:ui_demo/features/home/presentation/controllers/home_controller.dart';
-import 'package:ui_demo/features/home/presentation/widgets/home_post_list.dart';
+import 'package:wa_o_flutter/core/base/base_page.dart';
+import 'package:wa_o_flutter/core/widgets/app_state_layout.dart';
+import 'package:wa_o_flutter/features/home/presentation/controllers/home_controller.dart';
+import 'package:wa_o_flutter/features/home/presentation/widgets/home_post_list.dart';
 
 /// 分页列表与页面状态演示。
 class DataDemoPage extends ConsumerWidget {
