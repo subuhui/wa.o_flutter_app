@@ -9,6 +9,7 @@ import 'package:ui_demo/core/widgets/app_refresher.dart';
 import 'package:ui_demo/core/widgets/app_state_layout.dart';
 import 'package:ui_demo/features/home/data/models/demo_post.dart';
 import 'package:ui_demo/features/home/presentation/views/demo_stateful_page.dart';
+import 'package:ui_demo/features/home/presentation/widgets/home_feature_card.dart';
 
 void main() {
   group('基础架构单元测试与小部件测试', () {
@@ -141,6 +142,38 @@ void main() {
       expect(find.text('测试页面标题'), findsOneWidget);
       expect(find.text('固定安全底部栏'), findsOneWidget);
       expect(find.text('页面主体'), findsOneWidget);
+    });
+
+    testWidgets('首页功能卡片支持长文案与点击交互', (WidgetTester tester) async {
+      bool tapped = false;
+
+      await tester.pumpWidget(
+        buildTestApp(
+          child: Scaffold(
+            body: MediaQuery(
+              data: const MediaQueryData(
+                size: Size(375, 812),
+                textScaler: TextScaler.linear(1.5),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: HomeFeatureCard(
+                  icon: Icons.widgets_outlined,
+                  title: '基础组件',
+                  description: 'BaseState 页面、统一弹窗与自动适配安全区域的底部面板',
+                  onTap: () => tapped = true,
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      expect(tester.takeException(), isNull);
+      expect(find.text('基础组件'), findsOneWidget);
+      await tester.tap(find.text('基础组件'));
+      await tester.pump();
+      expect(tapped, isTrue);
     });
 
     testWidgets('DemoStatefulPage 基于 BaseConsumerState 正常渲染与自增交互',

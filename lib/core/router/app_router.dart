@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:go_router/go_router.dart';
+import '../../features/home/presentation/views/component_demo_page.dart';
+import '../../features/home/presentation/views/data_demo_page.dart';
 import '../../features/home/presentation/views/demo_stateful_page.dart';
 import '../../features/home/presentation/views/home_page.dart';
+import '../../features/home/presentation/views/system_demo_page.dart';
 import '../../features/order_detail/presentation/views/order_detail_page.dart';
 import 'route_paths.dart';
 
@@ -23,6 +26,18 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: RoutePaths.home,
         builder: (context, state) => const HomePage(),
+      ),
+      GoRoute(
+        path: RoutePaths.dataDemo,
+        builder: (context, state) => const DataDemoPage(),
+      ),
+      GoRoute(
+        path: RoutePaths.componentDemo,
+        builder: (context, state) => const ComponentDemoPage(),
+      ),
+      GoRoute(
+        path: RoutePaths.systemDemo,
+        builder: (context, state) => const SystemDemoPage(),
       ),
       GoRoute(
         path: RoutePaths.detail,
